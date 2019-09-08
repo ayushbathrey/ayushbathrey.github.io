@@ -1,4 +1,6 @@
 
+
+
                 <!-- Single Blog Area -->
                 <div class="col-12 col-lg-6">
                     <div class="single-post-area wow fadeInUpBig" data-wow-delay="100ms">

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Himali ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lavender: #E6E6FA;
+            --baby-pink: #FFD1DC;
+            --deep-lavender: #967BB6;
+            --text-color: #4E342E;
+            --white-silk: #FFFFFF;
+        }
+
+        /* The Heart Cursor */
+        html { 
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="%23d32f2f" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'), auto; 
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--baby-pink) 100%);
+            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
+        }
+
+        .particle {
+            position: absolute; opacity: 0.6;
+            animation: float-up 12s linear infinite;
+        }
+
+        @keyframes float-up {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        .hero { position: relative; z-index: 1; padding: 60px 20px; }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: var(--deep-lavender);
+            margin: 0;
+            text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
+        }
+
+        .gujarati-text {
+            font-size: 1.5rem;
+            color: white;
+            background: var(--deep-lavender);
+            padding: 12px 35px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(150, 123, 182, 0.3);
+            border: 2px solid white;
+        }
+
+        /* GIF Container with Pulse */
+        .photo-frame {
+            width: 280px; height: 280px;
+            margin: 20px auto;
+            border-radius: 50%;
+            border: 10px solid white;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+            background: var(--white-silk);
+            animation: pulse-heart 3s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes pulse-heart {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .photo-frame img { width: 100%; height: auto; object-fit: contain; }
+
+        /* "You Complete Me" Section */
+        .message-box {
+            margin: 30px auto;
+            max-width: 500px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            border-radius: 25px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--deep-lavender);
+            border: 1px dashed var(--deep-lavender);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .heart-icon { color: #e91e63; display: inline-block; animation: pulse-heart 1s infinite; }
+
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; position: relative; z-index: 1; }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 30px;
+            text-align: left;
+            border: 1px solid white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: 0.4s ease;
+        }
+
+        .card:hover { transform: translateY(-10px); background: white; }
+        .card b { display: block; color: var(--deep-lavender); font-size: 1.2rem; margin-bottom: 10px; }
+
+        .btn {
+            background: white;
+            color: var(--deep-lavender);
+            border: 2px solid var(--deep-lavender);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 10px;
+        }
+
+        .btn:hover { background: var(--deep-lavender); color: white; }
+
+        #popup {
+            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 85%; max-width: 400px; background: white; padding: 40px; 
+            border-radius: 35px; z-index: 1000; text-align: center;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+        }
+
+        #overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(230, 230, 250, 0.8); backdrop-filter: blur(10px); z-index: 999;
+        }
+
+        footer { padding: 80px 20px; opacity: 0.7; font-size: 0.8rem; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+    <div id="overlay" onclick="closePopup()"></div>
+    <div id="popup">
+        <div id="popup-content"></div>
+        <button class="btn" style="margin-top: 25px;" onclick="closePopup()">Close</button>
+    </div>
+
+    <div class="particles" id="particles"></div>
+
+    <section class="hero">
+        <h1>Hey Himali...</h1>
+        <div class="gujarati-text">ચિંતા ના કર, હું તારી સાથે છું ❤️</div>
+        
+        <div class="photo-frame">
+            <img src="https://media.tenor.com/EBV7OT7ACfwAAAAj/u-u-qua-qua-u-quaa.gif" alt="Cute Dance">
+        </div>
+
+        <div class="message-box">
+            Himali, you complete me <span class="heart-icon">❤️</span>
+        </div>
+        
+        <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem;">Three years. Two cities. One home.</div>
+    </section>
+
+    <div class="container">
+        <div class="card-grid">
+            <div class="card">
+                <b>📍 The Pune Legacy</b>
+                <p>Everything started 3 years ago in Pune. We’ve built a bond that transcends any city. You are the piece I was always looking for.</p>
+            </div>
+            
+            <div class="card">
+                <b>🍫 Dark Chocolate Promise</b>
+                <p>I’ll always be the sweetness that balances out the stress. Your comfort is my priority, Himali.</p>
+            </div>
+            
+            <div class="card">
+                <b>🥨 Jalebi-Fafra Match</b>
+                <p>આપણી જોડી એકદમ પરફેક્ટ છે! We are the perfect blend. I’m right here by your side through everything.</p>
+            </div>
+
+            <div class="card">
+                <b>🚂 The Ahmedabad Road</b>
+                <p>The upcoming journey to Ahmedabad is just a milestone. Don’t let anxiety win—I’ve got you.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 60px;">
+            <button class="btn" onclick="showPopup('hug')">Need a Hug?</button>
+            <button class="btn" onclick="showPopup('promise')">My Promise</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>PUNE • JABALPUR • AHMEDABAD</p>
+        <p style="font-family: 'Playfair Display'; font-style: italic; margin-top: 10px;">Three years of winning together.</p>
+    </footer>
+
+    <script>
+        const container = document.getElementById('particles');
+        const symbols = ['❤️', '✨', '🌸', '🍫', '☁️'];
+        for(let i=0; i<25; i++) {
+            const el = document.createElement('div');
+            el.className = 'particle';
+            el.innerText = symbols[Math.floor(Math.random()*symbols.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDelay = Math.random() * 12 + 's';
+            el.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            container.appendChild(el);
+        }
+
+        function showPopup(type) {
+            const content = document.getElementById('popup-content');
+            if(type === 'hug') {
+                content.innerHTML = "<h2 style='font-family:Dancing Script; font-size:2.5rem; color:#967BB6;'>A Warm Hug</h2><img src='https://media.tenor.com/T09_X6O8W6QAAAAi/mochi-mochi-peach-cat-hug.gif' style='width:100%; border-radius:20px;'><p>Himali, I’m right here. Close your eyes and feel the hug. I love you more than words can say.</p>";
+            } else {
+                content.innerHTML = "<h2 style='font-family:Dancing Script; font-size:2.5rem; color:#967BB6;'>My Promise</h2><p>Three years ago in Pune, I found my other half. Whether we are in Jabalpur or Ahmedabad, you complete me. I’m not going anywhere.</p>";
+            }
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

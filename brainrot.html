@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>😼 CAT BRAINROT OS</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:"Comic Sans MS","Trebuchet MS",sans-serif;
+  color:white;
+  background:#080014;
+  overflow-x:hidden;
+}
+
+/* ================= LOGIN ================= */
+
+#loginScreen{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:
+    radial-gradient(circle at 50% 40%,#7200ff,#130025 45%,#020005);
+  transition:1s;
+}
+
+.loginBox{
+  width:min(430px,90%);
+  padding:40px 30px;
+  text-align:center;
+  background:rgba(0,0,0,.8);
+  border:4px solid #00ffff;
+  border-radius:30px;
+  box-shadow:
+    0 0 30px #00ffff,
+    0 0 100px #ff00cc;
+  animation:float 3s infinite ease-in-out;
+}
+
+@keyframes float{
+  50%{
+    transform:translateY(-15px) rotate(1deg);
+  }
+}
+
+.loginBox h1{
+  font-size:3.2rem;
+  color:#ffff00;
+  text-shadow:
+    5px 5px #ff00cc,
+    -4px -4px #00ffff;
+}
+
+.loginBox p{
+  margin:15px 0 25px;
+  color:#00ffff;
+}
+
+input{
+  width:100%;
+  padding:15px;
+  border:3px solid #ff00cc;
+  border-radius:12px;
+  background:#100019;
+  color:white;
+  text-align:center;
+  font-size:1.1rem;
+  outline:none;
+}
+
+input:focus{
+  border-color:#ffff00;
+  box-shadow:0 0 20px #ffff00;
+}
+
+button{
+  border:3px solid white;
+  border-radius:12px;
+  padding:13px 25px;
+  margin-top:15px;
+  background:#ff00cc;
+  color:white;
+  font:bold 1rem "Comic Sans MS";
+  cursor:pointer;
+  transition:.2s;
+}
+
+button:hover{
+  transform:scale(1.1) rotate(-2deg);
+  background:#00ffff;
+  color:black;
+}
+
+#error{
+  min-height:25px;
+  margin-top:15px;
+  color:#ff3333;
+}
+
+/* ================= APP ================= */
+
+#app{
+  display:none;
+  min-height:100vh;
+  opacity:0;
+  transition:1s;
+}
+
+#app.show{
+  opacity:1;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  padding:15px 25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+  background:rgba(5,0,15,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:2px solid #ff00cc;
+}
+
+.logo{
+  color:#ffff00;
+  font-size:1.4rem;
+}
+
+.stats{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.stat{
+  padding:7px 12px;
+  background:#21003d;
+  border:1px solid #00ffff;
+  border-radius:10px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  text-align:center;
+  padding:60px 20px 40px;
+}
+
+.hero h1{
+  font-size:clamp(3rem,10vw,8rem);
+  color:#ffff00;
+  text-shadow:
+    7px 7px #ff00cc,
+    -5px -5px #00ffff;
+  animation:wobble .7s infinite alternate;
+}
+
+@keyframes wobble{
+  to{
+    transform:rotate(2deg) scale(1.04);
+  }
+}
+
+.hero p{
+  color:#00ffff;
+  font-size:1.3rem;
+  margin:15px;
+}
+
+/* ================= CONTROLS ================= */
+
+.controls{
+  max-width:1200px;
+  margin:auto;
+  padding:10px 20px 30px;
+  text-align:center;
+}
+
+.controls button{
+  margin:5px;
+}
+
+/* ================= RANDOM MEMES ================= */
+
+#catGrid{
+  max-width:1300px;
+  margin:auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:
+    repeat(auto-fill,minmax(230px,1fr));
+  gap:22px;
+}
+
+.card{
+  position:relative;
+  overflow:hidden;
+  min-height:320px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,0,200,.25),
+      rgba(0,255,255,.1)
+    ),
+    #0c0615;
+  border:3px solid white;
+  border-radius:22px;
+  cursor:pointer;
+  transition:.3s;
+  animation:cardIn .6s both;
+}
+
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:scale(.4) rotate(15deg);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1) rotate(0);
+  }
+}
+
+.card:hover{
+  transform:
+    translateY(-12px)
+    rotate(2deg)
+    scale(1.04);
+
+  border-color:#ffff00;
+
+  box-shadow:
+    0 0 20px #ff00cc,
+    0 0 45px #00ffff;
+}
+
+.card img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  display:block;
+}
+
+.cardContent{
+  padding:15px;
+}
+
+.card h2{
+  color:#ffff00;
+  font-size:1.25rem;
+}
+
+.card p{
+  margin-top:8px;
+  color:#ddd;
+  line-height:1.4;
+}
+
+.card .likes{
+  margin-top:10px;
+  color:#ff66bb;
+  font-size:.9rem;
+}
+
+.badge{
+  position:absolute;
+  top:10px;
+  right:10px;
+  padding:5px 8px;
+  background:#ff00cc;
+  border:2px solid white;
+  border-radius:8px;
+  font-size:.75rem;
+}
+
+/* ================= TERMINAL ================= */
+
+.terminal{
+  max-width:1200px;
+  margin:50px auto;
+  padding:20px;
+  background:#020202;
+  border:3px solid #00ff66;
+  border-radius:15px;
+  box-shadow:0 0 25px #00ff66;
+  font-family:monospace;
+}
+
+.terminalTitle{
+  color:#00ff66;
+  margin-bottom:12px;
+}
+
+#terminalText{
+  color:#00ff66;
+  line-height:1.7;
+  max-height:200px;
+  overflow:hidden;
+}
+
+/* ================= POPUP ================= */
+
+#popup{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:500;
+  width:300px;
+  padding:18px;
+  background:#150020;
+  border:3px solid #ff00cc;
+  border-radius:15px;
+  box-shadow:0 0 30px #ff00cc;
+  transform:translateX(400px);
+  transition:.5s;
+}
+
+#popup.show{
+  transform:translateX(0);
+}
+
+/* ================= PARTICLES ================= */
+
+.particle{
+  position:fixed;
+  z-index:400;
+  pointer-events:none;
+  font-size:25px;
+  animation:particle 2.5s linear forwards;
+}
+
+@keyframes particle{
+  from{
+    opacity:1;
+    transform:translateY(0) rotate(0) scale(1);
+  }
+
+  to{
+    opacity:0;
+    transform:
+      translateY(-250px)
+      rotate(600deg)
+      scale(1.8);
+  }
+}
+
+footer{
+  margin-top:60px;
+  padding:40px;
+  text-align:center;
+  background:#020005;
+  color:#ff00cc;
+}
+
+@media(max-width:600px){
+  header{
+    justify-content:center;
+  }
+
+  .hero{
+    padding-top:40px;
+  }
+
+  #catGrid{
+    grid-template-columns:
+      repeat(auto-fill,minmax(160px,1fr));
+    padding:12px;
+    gap:12px;
+  }
+
+  .card img{
+    height:150px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= LOGIN ================= -->
+
+<div id="loginScreen">
+
+  <div class="loginBox">
+
+    <h1>😼 CATOS</h1>
+
+    <p>
+      CLASSIFIED FELINE DATABASE<br>
+      AUTHORIZED PERSONNEL ONLY 💀
+    </p>
+
+    <input
+      id="password"
+      type="password"
+      placeholder="ENTER PASSWORD"
+      autocomplete="off"
+    >
+
+    <button onclick="login()">
+      🔓 ENTER THE BRAINROT
+    </button>
+
+    <div id="error"></div>
+
+    <small>
+      Hint: the date is extremely important...
+    </small>
+
+  </div>
+
+</div>
+
+
+<!-- ================= APP ================= -->
+
+<div id="app">
+
+<header>
+
+  <div class="logo">
+    😼 CATOS // BRAINROT OS v6.9
+  </div>
+
+  <div class="stats">
+
+    <div class="stat">
+      🧠 <span id="brainrot">0</span>%
+    </div>
+
+    <div class="stat">
+      ⭐ <span id="xp">0</span> XP
+    </div>
+
+    <div class="stat">
+      🐱 <span id="cats">0</span> cats
+    </div>
+
+  </div>
+
+</header>
+
+
+<section class="hero">
+
+  <h1>MEOW.EXE</h1>
+
+  <p>
+    100+ RANDOMIZED CATS HAVE ENTERED THE CHAT 💀
+  </p>
+
+</section>
+
+
+<div class="controls">
+
+  <button onclick="generateCats()">
+    🔀 SHUFFLE EVERYTHING
+  </button>
+
+  <button onclick="addMoreCats()">
+    ➕ SUMMON 20 MORE
+  </button>
+
+  <button onclick="activateBrainrot()">
+    🧠 MAXIMUM BRAINROT
+  </button>
+
+</div>
+
+
+<!-- ALL RANDOM ELEMENTS GO HERE -->
+
+<section id="catGrid"></section>
+
+
+<div class="terminal">
+
+  <div class="terminalTitle">
+    CATO://SYSTEM/TERMINAL
+  </div>
+
+  <div id="terminalText">
+    &gt; initializing feline kernel...<br>
+    &gt; loading brainrot modules...<br>
+    &gt; checking braincells...<br>
+    &gt; ERROR: braincell count = 1<br>
+    &gt; continuing anyway...
+  </div>
+
+</div>
+
+
+<footer>
+  😼 CATOS CORPORATION<br>
+  Absolutely no braincells were harmed.
+</footer>
+
+</div>
+
+
+<div id="popup"></div>
+
+
+<script>
+
+/* ==================================================
+   PASSWORD
+   ================================================== */
+
+const LOGIN_PASSWORD = "19/05/2023";
+
+
+/* ==================================================
+   100+ RANDOM CONTENT ITEMS
+   ================================================== */
+
+const titles = [
+  "SIGMA MEOW",
+  "THE OMINOUS ONE",
+  "CEO CAT",
+  "OHIO CAT",
+  "EMOTIONAL DAMAGE",
+  "BRO IS COOKING",
+  "FEDERAL CAT",
+  "RIZZ CAT",
+  "CHEESE TAX ENFORCER",
+  "THE FINAL BOSS",
+  "SLEEPY EMPLOYEE",
+  "UNEMPLOYED CAT",
+  "CAT WITH A PLAN",
+  "ABSOLUTE UNIT",
+  "DISTURBED FELINE",
+  "GOBLIN MODE",
+  "AURA FARMER",
+  "MEOW MASTER",
+  "CERTIFIED SILLY",
+  "THE CHOSEN ONE"
+];
+
+const descriptions = [
+  "bro has absolutely no idea what is happening.",
+  "he knows where the snacks are hidden.",
+  "zero thoughts. maximum aura.",
+  "the council has decided your fate.",
+  "bro failed the vibe check.",
+  "he has been staring at the wall for 7 hours.",
+  "the cheese tax is overdue.",
+  "this cat has achieved enlightenment.",
+  "bro is NOT beating the allegations.",
+  "one braincell. infinite possibilities.",
+  "he just discovered cardboard.",
+  "the prophecy has been fulfilled.",
+  "bro thinks he's the main character.",
+  "he has negative social skills.",
+  "the silliness levels are dangerous.",
+  "nobody knows what bro is plotting.",
+  "he paid the cheese tax in full.",
+  "the aura is absolutely astronomical.",
+  "bro has entered goblin mode.",
+  "this is peak feline cinema."
+];
+
+const badges = [
+  "💀 RARE",
+  "🔥 HOT",
+  "🗿 SIGMA",
+  "😭 SAD",
+  "💎 LEGENDARY",
+  "🚨 WARNING",
+  "😼 SILLY",
+  "🧠 9000 IQ",
+  "🧀 CHEESE",
+  "👁️ WATCHING"
+];
+
+const emojis = [
+  "😼","🐱","😹","😺","😸","😻",
+  "🙀","😿","😾","💀","🗿","🔥",
+  "🧀","😭","👁️","🤨","🤑"
+];
+
+
+/* ==================================================
+   RANDOM HELPERS
+   ================================================== */
+
+function random(array){
+  return array[
+    Math.floor(Math.random()*array.length)
+  ];
+}
+
+function randomNumber(min,max){
+  return Math.floor(
+    Math.random()*(max-min+1)
+  )+min;
+}
+
+
+/* ==================================================
+   LOGIN
+   ================================================== */
+
+function login(){
+
+  const input =
+    document.getElementById("password").value;
+
+  const error =
+    document.getElementById("error");
+
+  if(input === LOGIN_PASSWORD){
+
+    error.textContent="";
+
+    const loginScreen =
+      document.getElementById("loginScreen");
+
+    loginScreen.style.opacity="0";
+    loginScreen.style.transform="scale(1.5)";
+
+    setTimeout(()=>{
+
+      loginScreen.style.display="none";
+
+      const app =
+        document.getElementById("app");
+
+      app.style.display="block";
+
+      setTimeout(()=>{
+        app.classList.add("show");
+      },50);
+
+      generateCats();
+
+      notification(
+        "🔓 ACCESS GRANTED",
+        "The feline database has accepted you."
+      );
+
+    },900);
+
+  }else{
+
+    error.textContent=
+      "❌ WRONG PASSWORD. THE CAT IS DISAPPOINTED.";
+
+    document
+      .querySelector(".loginBox")
+      .animate(
+        [
+          {transform:"translateX(-12px)"},
+          {transform:"translateX(12px)"},
+          {transform:"translateX(-12px)"},
+          {transform:"translateX(0)"}
+        ],
+        {duration:300}
+      );
+  }
+}
+
+
+document
+  .getElementById("password")
+  .addEventListener("keydown",e=>{
+    if(e.key==="Enter") login();
+  });
+
+
+/* ==================================================
+   CREATE RANDOM CAT
+   ================================================== */
+
+function createCat(){
+
+  const card =
+    document.createElement("article");
+
+  card.className="card";
+
+  const title=random(titles);
+  const description=random(descriptions);
+  const badge=random(badges);
+
+  const width=randomNumber(400,900);
+
+  const likes =
+    randomNumber(100,999999);
+
+  card.innerHTML=`
+
+    <div class="badge">
+      ${badge}
+    </div>
+
+    <img
+      src="https://cataas.com/cat?width=${width}&t=${Date.now()}-${Math.random()}"
+      alt="Random brainrot cat"
+      loading="lazy"
+    >
+
+    <div class="cardContent">
+
+      <h2>
+        ${random(emojis)} ${title}
+      </h2>
+
+      <p>
+        ${description}
+      </p>
+
+      <div class="likes">
+        ❤️ ${likes.toLocaleString()} likes
+      </div>
+
+    </div>
+  `;
+
+  card.addEventListener("click",()=>{
+
+    xp += randomNumber(5,50);
+    brainrot += randomNumber(1,8);
+    cats++;
+
+    if(brainrot>100)
+      brainrot=100;
+
+    updateStats();
+
+    card.animate(
+      [
+        {transform:"scale(1)"},
+        {transform:"scale(1.15) rotate(5deg)"},
+        {transform:"scale(1) rotate(0)"}
+      ],
+      {duration:400}
+    );
+
+    spawnParticles();
+
+    notification(
+      "🐱 CAT ACTIVATED",
+      random([
+        "BRO GOT +50 AURA 💀",
+        "THE CAT APPROVES.",
+        "CHEESE TAX ACCEPTED 🧀",
+        "CRITICAL MEOW HIT 😼",
+        "ABSOLUTE FELINE CINEMA",
+        "THE BRAINROT GROWS."
+      ])
+    );
+
+  });
+
+  return card;
+}
+
+
+/* ==================================================
+   GENERATE 100+ RANDOM ELEMENTS
+   ================================================== */
+
+function generateCats(){
+
+  const grid =
+    document.getElementById("catGrid");
+
+  grid.innerHTML="";
+
+  cats=0;
+
+  /* 120 random elements */
+
+  for(let i=0;i<120;i++){
+
+    const card=createCat();
+
+    card.style.animationDelay=
+      `${Math.random()*0.8}s`;
+
+    grid.appendChild(card);
+  }
+
+  document.getElementById("cats").textContent=0;
+
+  terminalLog(
+    "generated 120 randomized feline entities..."
+  );
+}
+
+
+/* ==================================================
+   ADD MORE
+   ================================================== */
+
+function addMoreCats(){
+
+  const grid =
+    document.getElementById("catGrid");
+
+  for(let i=0;i<20;i++){
+
+    const card=createCat();
+
+    grid.appendChild(card);
+  }
+
+  terminalLog(
+    "20 additional cats summoned from the void..."
+  );
+
+  notification(
+    "🐱 SUMMONING COMPLETE",
+    "20 more cats have entered the server."
+  );
+}
+
+
+/* ==================================================
+   STATS
+   ================================================== */
+
+let xp=0;
+let brainrot=0;
+let cats=0;
+
+function updateStats(){
+
+  document.getElementById("xp")
+    .textContent=xp;
+
+  document.getElementById("brainrot")
+    .textContent=brainrot;
+
+  document.getElementById("cats")
+    .textContent=cats;
+}
+
+
+/* ==================================================
+   BRAINROT
+   ================================================== */
+
+function activateBrainrot(){
+
+  brainrot=100;
+  xp+=1000;
+
+  updateStats();
+
+  spawnParticles();
+  spawnParticles();
+
+  notification(
+    "🧠 BRAINROT LEVEL: CRITICAL",
+    random([
+      "THE LAST BRAIN CELL HAS LEFT.",
+      "SKIBIDI MEOW PROTOCOL ACTIVATED.",
+      "OHIO HAS BEEN SUMMONED.",
+      "AURA LEVELS ARE UNSAFE.",
+      "THE CAT HAS BECOME SENTIENT."
+    ])
+  );
+
+  terminalLog(
+    "WARNING: brainrot has reached 100%..."
+  );
+}
+
+
+/* ==================================================
+   POPUP
+   ================================================== */
+
+function notification(title,text){
+
+  const popup =
+    document.getElementById("popup");
+
+  popup.innerHTML=`
+    <strong>${title}</strong>
+    <br><br>
+    ${text}
+  `;
+
+  popup.classList.add("show");
+
+  setTimeout(()=>{
+    popup.classList.remove("show");
+  },3500);
+}
+
+
+/* ==================================================
+   PARTICLES
+   ================================================== */
+
+function spawnParticles(){
+
+  for(let i=0;i<20;i++){
+
+    const p =
+      document.createElement("div");
+
+    p.className="particle";
+
+    p.textContent=random(emojis);
+
+    p.style.left=
+      Math.random()*100+"vw";
+
+    p.style.top=
+      (50+Math.random()*40)+"vh";
+
+    p.style.animationDuration=
+      (1.5+Math.random()*2)+"s";
+
+    document.body.appendChild(p);
+
+    setTimeout(()=>{
+      p.remove();
+    },3500);
+  }
+}
+
+
+/* ==================================================
+   TERMINAL
+   ================================================== */
+
+function terminalLog(message){
+
+  const terminal =
+    document.getElementById("terminalText");
+
+  terminal.innerHTML+=
+    `<br>&gt; ${message}`;
+
+  terminal.scrollTop=
+    terminal.scrollHeight;
+}
+
+
+/* ==================================================
+   RANDOM SYSTEM EVENTS
+   ================================================== */
+
+setInterval(()=>{
+
+  const messages=[
+    "cat.exe has requested cheese privileges...",
+    "braincell detected...",
+    "braincell disappeared...",
+    "someone is watching the server...",
+    "meow frequency increasing...",
+    "Ohio coordinates acquired...",
+    "cardboard box detected...",
+    "aura farming detected...",
+    "cheese tax enforcement deployed...",
+    "cat has entered goblin mode..."
+  ];
+
+  terminalLog(random(messages));
+
+},2500);
+
+</script>
+
+</body>
+</html>
